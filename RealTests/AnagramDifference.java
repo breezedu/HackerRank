@@ -22,44 +22,7 @@ import static java.util.stream.Collectors.toList;
      *  2. STRING_ARRAY b
      */
 
-    public static List<Integer> getMinimumDifference(List<String> a, List<String> b) {
-		
-    // Write your code here 
-    	List<Integer> retList = new ArrayList<Integer>(); 
-    	
-    	for(int i=0; i<a.size(); i++){
-    		
-    		String first = a.get(i);
-    		String second = b.get(i);
-    		
-            Map<Character, Integer> count = new HashMap<>();
-            for( char ch: first.toCharArray() ) {
-                int ct = count.containsKey(ch) ? count.get(ch) : 0;
-                count.put(ch, (ct + 1));
-            }
-            
-            for( char ch: second.toCharArray() ) {
-                int ct = count.containsKey(ch) ? count.get(ch) : 0;
-                count.put(ch, (ct - 1));
-            }
-            
-            List<Integer> values = new ArrayList<>( count.values() );
-            int total = 0;
-            for( Integer v: values ) {
-                total += Math.abs(v);
-            }
-            
-            if(first.length() != second.length() ) total = -1;
-            
-            System.out.println("To remove: " + total) ;
-    		
-            retList.add(total); 
-            
-    	} //end for loop; 
-    	
-    	return retList; 
 
-}
 
 public class AnagramDifference {
     public AnagramDifference(String[] args) throws IOException {
@@ -96,4 +59,44 @@ public class AnagramDifference {
      //   bufferedWriter.close();
     }
 
-}
+	private List<Integer> getMinimumDifference(List<String> a, List<String> b) {
+		// TODO Auto-generated method stub    
+			
+	        // Write your code here 
+	        	List<Integer> retList = new ArrayList<Integer>(); 
+	        	
+	        	for(int i=0; i<a.size(); i++){
+	        		
+	        		String first = a.get(i);
+	        		String second = b.get(i);
+	        		
+	                Map<Character, Integer> count = new HashMap<>();
+	                for( char ch: first.toCharArray() ) {
+	                    int ct = count.containsKey(ch) ? count.get(ch) : 0;
+	                    count.put(ch, (ct + 1));
+	                }
+	                
+	                for( char ch: second.toCharArray() ) {
+	                    int ct = count.containsKey(ch) ? count.get(ch) : 0;
+	                    count.put(ch, (ct - 1));
+	                }
+	                
+	                List<Integer> values = new ArrayList<>( count.values() );
+	                int total = 0;
+	                for( Integer v: values ) {
+	                    total += Math.abs(v);
+	                }
+	                
+	                if(first.length() != second.length() ) total = -1;
+	                
+	                System.out.println("To remove: " + total) ;
+	        		
+	                retList.add(total); 
+	                
+	        	} //end for loop; 
+	        	
+	        	return retList; 
+
+	          }
+	}
+
