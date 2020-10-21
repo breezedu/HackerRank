@@ -1,4 +1,3 @@
-package test;
 import java.io.*;
 import java.math.*;
 import java.security.*;
@@ -13,7 +12,7 @@ import static java.util.stream.Collectors.toList;
 
 
 
-class ResultThrottling {
+class ResultTG {
 
     /*
      * Complete the 'droppedRequests' function below.
@@ -25,71 +24,71 @@ class ResultThrottling {
     public static int droppedRequests(List<Integer> requestTime) {
     // Write your code here
     int requestDrop = 0;   
-    HashMap<Integer, Integer> requestCount = new HashMap<Integer, Integer>();
-    List<Integer> requestQ = new ArrayList<Integer>();
+    //HashMap<Integer, Integer> requestCount = new HashMap<Integer, Integer>();
     
-    
+    Queue<Integer> requestQ01 = new LinkedList<Integer>();
+    Queue<Integer> requestQ10 = new LinkedList<Integer>();
+    Queue<Integer> requestQ60 = new LinkedList<Integer>();
     
     for(int i=0; i< requestTime.size(); i++){        	
-    	System.out.println(" working on ith: " + i); 
     	
-    	int currRequest = requestTime.get(i); 
-        requestQ.add( currRequest );
+    	
+    	int currRequest = requestTime.get(i);         
     	        
         // check current time and the time in 10s 
         
         int currTime = currRequest; 
+        int preTime01 = Math.max(currTime -1, 1);
         int preTime10 = Math.max(currTime - 9, 1); 
         int preTime60 = Math.max(currTime - 59, 1); 
-        int req10s = 0;
         
-        int req60s = 0;
-     //   System.out.print(" pretime: " + preTime + " , currTime: " + currTime);
-        for(int j=0; j< i; j++){
-        	if(requestTime.get(j) >= preTime10 && requestTime.get(j) <= currTime){
-        		req10s ++; 
-        	}   
-        	
-        	if(requestTime.get(j) >= preTime60 && requestTime.get(j) <= currTime){
-        		req60s ++; 
-        	}  
-        	
-        } //end for 10s; 
+        System.out.println(" working on ith: " + i + " currTime=" + 
+                            requestTime.get(i) + " pre01=" + preTime01 + 
+                            " pre10=" + preTime10 + " pre60=" + preTime60
+                            + " Qs size: " + requestQ01.size() + " | " + requestQ10.size() + " | " + requestQ60.size()); 
+        
+        boolean drop01=false, drop10=false, drop60=false; 
+        
+        //while contains current - 1 // current -10 // current -60, remove the first elements
+        while( requestQ01.peek()!=null && requestQ01.peek() < currTime){
+        	System.out.print(" Q01 remove item: " + requestQ01.peek());
+        	requestQ01.poll();
+
+        }
+        
+        while( requestQ10.peek()!=null && requestQ10.peek() < preTime10 ){
+        	System.out.print(" Q10 remove item: " + requestQ10.peek());
+        	requestQ10.poll();
+        }
+        
+        while( requestQ60.peek()!=null && requestQ60.peek() < preTime60){
+        	System.out.print(" Q60 remove item: " + requestQ60.peek());
+        	requestQ60.poll();
+        }
+        
+        //check size of each Queue
+        if(requestQ01.size() > 2){
+        	drop01 = true;
+        } else {
+        	requestQ01.add(currRequest);
+        }
+        
+        if(requestQ10.size() > 19){
+        	drop10 = true;
+        } else {
+        	requestQ10.add(currRequest);
+        }
+        
+        if(requestQ60.size() > 59){
+        	drop60 = true;
+        } else {
+        	requestQ60.add(currRequest);
+        }
+
+    	if(drop01 || drop10 || drop60){
+    		requestDrop ++; 
     	
-    	        
-        
-    	if(req10s >= 20){
-    		requestDrop++;                       
-            requestQ.remove( requestQ.size() -1 );  
-            System.out.println("Remove 10s + " + currRequest);  
-            
-    	} else if(req60s >= 60){
-    		requestDrop++;        
-    	//	System.out.println("Remove 60s + " + currRequest + " queue size: " + requestQ.size());
-            requestQ.remove( requestQ.size() -1 );    
-            
-            } else {
-            	
-             	
-                if(!requestCount.containsKey( currRequest )){
-                 
-                 requestCount.put(currRequest, 1);           
-                 
-               } else {            
-                       int currCount = requestCount.get( currRequest ) + 1; 
-                  //     System.out.println("currCount: " + currCount + " "); 
-                       
-                       if(currCount > 3) {
-                                 requestDrop++;                       
-                                 requestQ.remove( requestQ.size() -1 );                                                          
-                       } else {
-                       			requestCount.put(currRequest,  currCount); 
-                       }
-               }               
-            	
-            }
-   
-                    
+    	}                           
         
     }//end for loop    
     
@@ -118,7 +117,7 @@ public class ThrottlingGateway {
             .map(Integer::parseInt)
             .collect(toList());
 
-        int result = ResultThrottling.droppedRequests(requestTime);
+        int result = ResultTG.droppedRequests(requestTime);
         
         System.out.println("Out: " + result); 
 
