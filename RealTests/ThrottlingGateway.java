@@ -174,41 +174,34 @@ class ResultTG {
         /*****************
          * Although, if a request is to be dropped due to multiple violations, it is still counted only once.        
          */
-        //check size of each Queue
-        if(requestQ01.size() > 2){
-        	drop01 = true;
-        	System.out.println("* Drop 01 ");
-        	requestQ01.add(currRequest);
-        	
-        } else {
-        	requestQ01.add(currRequest);
-        }
         
-        if(requestQ10.size() > 19){
+        //add current request to each Queue; 
+        requestQ01.add(currRequest);
+        requestQ10.add(currRequest);
+        requestQ60.add(currRequest);
+        
+        //check size of each Queue, if the count of total items exceed the limit, drop++;
+        if(requestQ01.size() > 3){
+        	drop01 = true;
+        	System.out.println("* Drop 01 ");        	
+        }           
+        
+        if(requestQ10.size() > 20){
         	drop10 = true;
         	System.out.println("* Drop 10 ");
-        	requestQ10.add(currRequest);
-        } else {
-        	requestQ10.add(currRequest);
         }
         
-        if(requestQ60.size() > 59){
+        if(requestQ60.size() > 60){
         	drop60 = true;
         	System.out.println("* Drop 60 ");
-        	requestQ60.add(currRequest);
-        } else {
-        	requestQ60.add(currRequest);
         }
         
         // if an item got dropped from any Queue, requestDrop ++; 
     	if(drop01 || drop10 || drop60){
-    		requestDrop ++; 
-    	
+    		requestDrop ++;    	
     	}                           
         
-    }//end for loop    
-    
-   
+    }//end for loop          
     
      return requestDrop;  
     } //end droppedRequests() function; 
