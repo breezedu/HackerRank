@@ -49,18 +49,20 @@ class ResultTG {
         
         boolean drop01=false, drop10=false, drop60=false; 
         
-        //while contains current - 1 // current -10 // current -60, remove the first elements
+        //while requestQ01 contains any request not in current second, remove it
         while( requestQ01.peek()!=null && requestQ01.peek() < currTime){
         	System.out.print(" Q01 remove item: " + requestQ01.peek());
         	requestQ01.poll();
 
         }
-        
+
+        //while requestQ10 contains any request not in past 10 seconds, remove it
         while( requestQ10.peek()!=null && requestQ10.peek() < preTime10 ){
         	System.out.print(" Q10 remove item: " + requestQ10.peek());
         	requestQ10.poll();
         }
         
+        //while requestQ60 contains any request not in past 60 second, remove it
         while( requestQ60.peek()!=null && requestQ60.peek() < preTime60){
         	System.out.print(" Q60 remove item: " + requestQ60.peek());
         	requestQ60.poll();
@@ -84,7 +86,8 @@ class ResultTG {
         } else {
         	requestQ60.add(currRequest);
         }
-
+        
+        // if an item got dropped from any Queue, requestDrop ++; 
     	if(drop01 || drop10 || drop60){
     		requestDrop ++; 
     	
@@ -95,9 +98,9 @@ class ResultTG {
    
     
      return requestDrop;  
-    }
+    } //end droppedRequests() function; 
 
-}
+} //end ResultTG class; 
 
 public class ThrottlingGateway {
     public static void main(String[] args) throws IOException {
