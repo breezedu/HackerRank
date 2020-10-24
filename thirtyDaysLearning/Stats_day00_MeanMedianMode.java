@@ -26,6 +26,9 @@ public class Stats_day00_MeanMedianMode {
             int arrItem = Integer.parseInt(arrItems[i]);
             arr[i] = arrItem;
         }
+        
+        scanner.close();
+        
 
         Arrays.sort(arr); 
         int sum = 0;
