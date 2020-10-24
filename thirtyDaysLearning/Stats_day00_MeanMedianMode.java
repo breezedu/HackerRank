@@ -38,9 +38,10 @@ public class Stats_day00_MeanMedianMode {
         if( arr.length % 2 == 1){
             median = arr[ arr.length/2]; 
         } else {
-            median = (float)(arr[arr.length/2] + arr[arr.length/2 -1]); 
+            median = (float)(arr[arr.length/2] + arr[arr.length/2 -1])/2; 
         }
 
+        //check mode, not necessary to use HashMap or double for loops to calculate counts for each item;
         int mode = arr[0];
         int max = 1;
         int appearance = 1;        
