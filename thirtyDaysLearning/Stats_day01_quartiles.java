@@ -38,9 +38,9 @@ public class Stats_day01_quartiles {
         
         
         if( a.length %2 ==0){
-        	Q1 = calMedian(a, 0, a.length/2);
+        	Q1 = calMedian(a, 0, a.length/2 - 1 );
         } else {
-        	Q1 = calMedian(a, 0, a.length/2 - 1);
+        	Q1 = calMedian(a, 0, a.length/2 );
         }
         
         
