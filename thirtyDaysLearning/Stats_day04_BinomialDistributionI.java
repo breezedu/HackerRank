@@ -14,8 +14,8 @@ public class Stats_day04_BinomialDistributionI {
         p = p/(p+q);
         q = 1.0-p; 
         
-        System.out.println("p = " + p + " , q = " + q);
-        System.out.println( combination(6, 3) ); 
+        System.out.println(" p = " + p + " \n q = " + q);
+        System.out.println("combination of 3 out of 6: " + combination(6, 3) ); 
 
         double boyMore3 = 0; 
         for(int i=3; i<7; i++){
@@ -32,6 +32,7 @@ public class Stats_day04_BinomialDistributionI {
 		// TODO Auto-generated method stub
 		
 		return combination(n, x) * Math.pow(p, x) * Math.pow(q, n-x);
+		
 	} //end calBionomial() 
 
 	private static double combination(int n, int x) {
