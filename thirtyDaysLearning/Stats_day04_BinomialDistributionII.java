@@ -3,6 +3,11 @@ package thirtyDaysLearning;
 import java.io.*;
 import java.util.*;
 
+/**********
+ * 
+ * @author Jeff
+ * question link: https://www.hackerrank.com/challenges/s10-binomial-distribution-2/problem 
+ */
 public class Stats_day04_BinomialDistributionII {
 
     public static void main(String[] args) {
