@@ -10,7 +10,7 @@ import java.util.Scanner;
  * https://www.hackerrank.com/challenges/s10-normal-distribution-1/problem
  */
 
-public class Stats_day06_NormalDistribution_02 {
+public class Stats_day05_NormalDistribution_01 {
 	
 	public static void main(String[] args) {
         /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
@@ -19,24 +19,19 @@ public class Stats_day06_NormalDistribution_02 {
         double mean  = scan.nextDouble();
         double sigma = scan.nextDouble(); 
         double x1 = scan.nextDouble(); 
-        double x2 = scan.nextDouble();         
+        double x2 = scan.nextDouble(); 
+        double x3 = scan.nextDouble(); 
 
         scan.close();
         
-        double p1 = 1 - calCDF_normal(x1, mean, sigma);  
+        double p1 = calCDF_normal(x1, mean, sigma);  
         
-        System.out.printf("%.3f", p1*100);
+        System.out.printf("%.3f", p1);
         
-        double p3 = calCDF_normal(x2, mean, sigma); // - calCDF_normal(x2, mean, sigma); 
-        double p2 = 1 - p3;  
-        
-        System.out.println(); 
-        System.out.printf("%.3f", p2*100 ); 
-        
-       
+        double p2 = calCDF_normal(x3, mean, sigma) - calCDF_normal(x2, mean, sigma); 
         
         System.out.println(); 
-        System.out.printf("%.3f", p3*100 ); 
+        System.out.printf("%.3f", p2 ); 
     }
 
 	private static double calCDF_normal(double x, double mean, double sigma) {
