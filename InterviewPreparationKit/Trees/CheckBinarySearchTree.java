@@ -46,7 +46,7 @@ class CheckBinarySearchTree {
 		
 		return bst; 
 		
-    } //end lca() method; 
+    } //end checkBST() method; 
 
 	
 
@@ -57,7 +57,7 @@ class CheckBinarySearchTree {
 			return null;
 		}
 		
-		System.out.println("work on node:" + root.data); 
+		// System.out.println("work on node:" + root.data); 
 		
 		ArrayList<Integer> currList = new ArrayList<Integer>(); 
 		ArrayList<Integer> leftList = inOrderTraversal(root.left); 
@@ -98,7 +98,7 @@ class CheckBinarySearchTree {
             }
             return root;
         }
-    }
+    } //end insert(); 
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
@@ -112,5 +112,5 @@ class CheckBinarySearchTree {
         scan.close();
         boolean bst = checkBST(root);
         System.out.println( bst );
-    }	
-}
+    }	//end main(); 
+}//ee 
