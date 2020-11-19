@@ -34,7 +34,7 @@ class CheckBinarySearchTree_2 {
       	// Write your code here. 
 		return checkBST_MinMax(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
 		
-    } //end lca() method; 
+    } //end checkBST() method; 
 
 	
 	private static boolean checkBST_MinMax(Node root, int min, int max) {
@@ -45,7 +45,7 @@ class CheckBinarySearchTree_2 {
 		boolean rightCheck = checkBST_MinMax(root.right, root.data, max);
 		
 		return (leftCheck && rightCheck); 
-	}
+	}//end checkBST_MinMax(); 
 
 
 	public static Node insert(Node root, int data) {
@@ -62,7 +62,7 @@ class CheckBinarySearchTree_2 {
             }
             return root;
         }
-    }
+    }//end insert() method; 
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
@@ -76,5 +76,5 @@ class CheckBinarySearchTree_2 {
         scan.close();
         boolean bst = checkBST(root);
         System.out.println( bst );
-    }	
+    }//end main(); 	
 }
