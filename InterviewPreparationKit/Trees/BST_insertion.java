@@ -44,12 +44,11 @@ class BST_insertion {
 			root = new Node(data); 
 			
 		} else if(data > root.data){
-			Node currNode = insert( root.right, data); 
-			root.right = currNode; 
+			root.right = insert( root.right, data); 			
 			
 		} else {
-			Node currNode = insert( root.left, data);
-			root.left = currNode; 
+			root.left = insert( root.left, data);
+			
 		}
 		
 		return root;    	
@@ -65,5 +64,5 @@ class BST_insertion {
         }
         scan.close();
       	preOrder(root);
-    }	
-}
+    } //end main();	
+}//ee
