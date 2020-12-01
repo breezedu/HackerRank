@@ -71,7 +71,7 @@ public class BalancedBrackets {
 	private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+        // BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
         int t = scanner.nextInt();
         scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
@@ -79,13 +79,15 @@ public class BalancedBrackets {
         for (int tItr = 0; tItr < t; tItr++) {
             String s = scanner.nextLine();
 
-            String result = isBalanced(s);
+            String result = isBalanced(s); 
+            
+            System.out.println(" The brackets: " + s + " is " + result + " balanced"); 
 
-            bufferedWriter.write(result);
-            bufferedWriter.newLine();
+            // bufferedWriter.write(result);
+            // bufferedWriter.newLine();
         }
 
-        bufferedWriter.close();
+        // bufferedWriter.close();
 
         scanner.close();
     }
