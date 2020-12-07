@@ -8,6 +8,12 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.regex.*;
 
+/*******************************
+ * 
+ * @author Jeff
+ * Question: 
+ * https://www.hackerrank.com/challenges/palindrome-index/problem
+ */
 public class PalidromeIndex {
 
     // Complete the palindromeIndex function below.
@@ -28,17 +34,16 @@ public class PalidromeIndex {
     			if( isPalidrome(subS)){
     				return start;
     				
-    			} else {
-    				
+    			} else {    				
     				return end;
     			}
-    		}
+    		} //end if char == char conditions; 
     		
-    	}
+    	} //end while start < end loop;
     	
     	return index; 
 
-    }
+    } //end palidromeIndex() method; 
 
     private static boolean isPalidrome(String s) {
 		// TODO Auto-generated method stub
@@ -83,6 +88,6 @@ public class PalidromeIndex {
         
 
         scanner.close();
-    }
-}
+    } //end main(); 
+} //ee
 
