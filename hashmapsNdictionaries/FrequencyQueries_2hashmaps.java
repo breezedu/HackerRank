@@ -12,6 +12,12 @@ import java.util.stream.*;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
+/***************************************
+ * 
+ * @author Jeff
+ * Queestion: 
+ * https://www.hackerrank.com/challenges/frequency-queries/problem 
+ */
 public class FrequencyQueries_2hashmaps {
 
     // Complete the freqQuery function below.
@@ -39,9 +45,10 @@ public class FrequencyQueries_2hashmaps {
     				freq = add2Hash(freq, 1);
     				
     			} else {
-    				
+    				//update freq hashmap first; 
     				freq = minusFromHash(freq, qMap.get(num));
     				freq = add2Hash(freq, qMap.get(num)+1); 
+    				
     				qMap.put(num, qMap.get(num)+1);
     			}
     			break;
@@ -50,8 +57,7 @@ public class FrequencyQueries_2hashmaps {
     				
     				
     				//remove qMap.get(num) from the freq map;
-    				freq = minusFromHash(freq, qMap.get(num)); 	
-    				
+    				freq = minusFromHash(freq, qMap.get(num)); 	    				
     				//add the new frequency to the freq hashmap;
     				freq = add2Hash(freq, qMap.get(num) -1);    	
     				
@@ -83,6 +89,12 @@ public class FrequencyQueries_2hashmaps {
 
     } //end freqQuery() 
 
+    /******
+     * for a HashMap<x,y> make the entry to HashMap<x, y-1>;
+     * @param freq
+     * @param n
+     * @return
+     */
     private static HashMap<Integer, Integer> minusFromHash(HashMap<Integer, Integer> freq, Integer n) {
 		// TODO Auto-generated method stub
     	System.out.println(" minusFHash: " + n + " contains " + freq.get(n)); 
@@ -100,6 +112,12 @@ public class FrequencyQueries_2hashmaps {
 		return freq;
 	}//end minusFromHash();
 
+    /************
+     * For a hashmap<x,y>, make the entry to HashMap<x, y+1>; 
+     * @param freq
+     * @param n
+     * @return
+     */
 	private static HashMap<Integer, Integer> add2Hash(HashMap<Integer, Integer> freq, int n) {
 		// TODO Auto-generated method stub    	
     	if(!freq.containsKey(n)){
