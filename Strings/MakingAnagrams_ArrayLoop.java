@@ -7,7 +7,12 @@ import java.text.*;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.regex.*;
-
+/******************
+ * 
+ * @author Jeff
+ * Question:
+ * https://www.hackerrank.com/challenges/making-anagrams/problem
+ */
 public class MakingAnagrams_ArrayLoop {
 
     // Complete the makingAnagrams function below.
